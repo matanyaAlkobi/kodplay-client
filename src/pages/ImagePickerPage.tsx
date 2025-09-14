@@ -36,7 +36,7 @@ export function ImagePickerPage() {
               </div>
               <div>
                 <img
-                  src="./src/assets/familiar_face_and_zone.png"
+                  src="/src/assets/familiar_face_and_zone.png"
                   alt="preview"
                 />
               </div>
