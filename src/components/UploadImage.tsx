@@ -1,3 +1,5 @@
+
+
 type UploadImageProps = {
   onImageSelect: (imageURL: string) => void;
 };

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import UploadImage from "../components/UploadImage.tsx";
 import "../styles/ImagePickerPage.css";
+
 import { detectFacialExpression } from "../components";
+
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -15,7 +17,7 @@ export function ImagePickerPage() {
       return;
     }
     await detectFacialExpression(selectedImage);
-    // כאן אפשר לשלוח לשרת או לנווט לדף השירים
+
   };
 
   return (
