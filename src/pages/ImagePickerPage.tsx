@@ -1,7 +1,8 @@
 import { useState } from "react";
 import UploadImage from "../components/UploadImage.tsx";
 import "../styles/ImagePickerPage.css";
-import {detectFacialExpression} from "../components";
+
+import { detectFacialExpression } from "../components";
 
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -25,11 +26,13 @@ export function ImagePickerPage() {
         <div className="h2-uploadImage">
           <h2>Choose how to provide your photo</h2>
         </div>
+        {selectedImage && <img src={selectedImage} alt="preview" />}
+
         <div className="too-options">
           <div className="uploadImage-section">
             <UploadImage onImageSelect={handleImageSelect} />
-            {selectedImage && <img src={selectedImage} alt="preview" />}
           </div>
+
           <div className="selfTakingPicture-section">
             <div>
               <div>
@@ -37,13 +40,14 @@ export function ImagePickerPage() {
               </div>
               <div>
                 <img
-                  src="./src/assets/familiar_face_and_zone.png"
+                  src="/src/assets/familiar_face_and_zone.png"
                   alt="preview"
                 />
               </div>
             </div>
           </div>
         </div>
+
         <button onClick={handleSubmit}>Continue</button>
       </div>
     </>
