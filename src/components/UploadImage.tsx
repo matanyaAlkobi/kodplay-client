@@ -7,6 +7,7 @@ export  default function UploadImage({ onImageSelect }: UploadImageProps) {
     const file = event.target.files?.[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
+      console.log(imageURL)
       onImageSelect(imageURL);
     }
   };
