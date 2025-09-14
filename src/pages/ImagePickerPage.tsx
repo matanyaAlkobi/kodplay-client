@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UploadImage from "../components/UploadImage.tsx";
 import "../styles/ImagePickerPage.css";
-
+import { detectFacialExpression } from "../components";
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -9,12 +9,12 @@ export function ImagePickerPage() {
     setSelectedImage(imageURL);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!selectedImage) {
       alert("Please select or take a picture first!");
       return;
     }
-    alert("Image is ready to be processed!");
+    await detectFacialExpression(selectedImage);
     // כאן אפשר לשלוח לשרת או לנווט לדף השירים
   };
 
@@ -24,11 +24,13 @@ export function ImagePickerPage() {
         <div className="h2-uploadImage">
           <h2>Choose how to provide your photo</h2>
         </div>
+        {selectedImage && <img src={selectedImage} alt="preview" />}
+
         <div className="too-options">
           <div className="uploadImage-section">
             <UploadImage onImageSelect={handleImageSelect} />
-            {selectedImage && <img src={selectedImage} alt="preview" />}
           </div>
+
           <div className="selfTakingPicture-section">
             <div>
               <div>
@@ -43,6 +45,7 @@ export function ImagePickerPage() {
             </div>
           </div>
         </div>
+
         <button onClick={handleSubmit}>Continue</button>
       </div>
     </>
