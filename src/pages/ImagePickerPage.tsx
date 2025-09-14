@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UploadImage from "../components/UploadImage.tsx";
 import "../styles/ImagePickerPage.css";
+import {detectFacialExpression} from "../components";
 
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -9,13 +10,13 @@ export function ImagePickerPage() {
     setSelectedImage(imageURL);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!selectedImage) {
       alert("Please select or take a picture first!");
       return;
     }
-    alert("Image is ready to be processed!");
-    // כאן אפשר לשלוח לשרת או לנווט לדף השירים
+    await detectFacialExpression(selectedImage);
+
   };
 
   return (
