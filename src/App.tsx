@@ -1,11 +1,11 @@
-import { CameraBtn } from "./components/buttons"
+import { ImagePickerPage } from "./pages/ImagePickerPage"
 
 function App() {
 
 
   return (
     <>
-      <CameraBtn />
+    <ImagePickerPage/>
     </>
   )
 }
