@@ -51,7 +51,7 @@ export default function Login(){
                     setError(false)
                     const token = await res?.json()
                     saveToken(token)
-                    navigate('/home')
+                    navigate('/home',{state:{}})
                 }
         }}>submit</button>
         {loading && <p>loading...</p>}
