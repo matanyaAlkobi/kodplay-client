@@ -1,5 +1,7 @@
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default async function login(user:object){
-    const res = fetch('http://localhost:4545/users/login',{
+    const res = fetch(`${API_BASE}/users/login`,{
         method:"POST",
         headers:{
             "Content-Type": "application/json"
