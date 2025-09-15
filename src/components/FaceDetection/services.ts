@@ -1,7 +1,5 @@
 import * as faceapi from "face-api.js";
 
-
-
 // Type definition for expression names
 type ExpressionName =
   | "happy"
@@ -97,8 +95,6 @@ export default async function detectFacialExpression(
 
   // Analyze the image and return the result
   const result = await analyzeImage(imageURL);
-
-  console.log(result);
-
+  alert(result);
   return result;
 }
