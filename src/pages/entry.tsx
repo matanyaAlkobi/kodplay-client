@@ -23,7 +23,7 @@ export default function Entry(){
         const checkToken = async() => {
             const token = await checkIfTokenValid()
             if(token.ok){
-                navigate('/home')
+                navigate('/home',{state:{}})
             }
         }
         checkToken()
