@@ -1,8 +1,19 @@
-import { useState } from "react"
 import { useNavigate } from "react-router"
+import checkIfTokenValid from "../utils/checkToken"
+import { useEffect } from "react"
+
 
 export default function Entry(){
     const navigate = useNavigate()
+    useEffect(() => {
+        const checkToken = async() => {
+            const token = await checkIfTokenValid()
+            if(token.ok){
+                navigate('/home')
+            }
+        }
+        checkToken()
+    },[])
     return<>
         <h1>how do you want to entry</h1>
         <button onClick={() => {
