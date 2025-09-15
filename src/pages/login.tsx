@@ -1,33 +1,57 @@
 import { useLocation } from "react-router"
 import login from "../utils/login"
 import { useRef, useState } from "react"
+import signin from "../utils/signin"
 
 export default function Login(){
     const logorSign = useLocation()
     const username = useRef<HTMLInputElement>(null)
     const password = useRef<HTMLInputElement>(null)
-    const [passwordMatch,setPasswordMatch] = useState(true)
-    const [notError,setNotError] = useState(true)
+    const email = useRef<HTMLInputElement>(null)
+    const [inputEmpty,setInputEmpty] = useState(false)
+    const [notPasswordMatch,setPasswordMatch] = useState(false)
+    const [Error,setError] = useState(false)
+    const [loading,setLoading] = useState(false)
     return<form>
-        <input type="text" placeholder="username" ref={username}/>
-        <input type="password" placeholder="password" ref={password}/>
-        {logorSign.state.logorsign === 'signin'?<input type="email" placeholder="email"/>:<p></p>}
+        <input type="text" placeholder="username" ref={username} required/>
+        <input type="password" placeholder="password" ref={password} required/>
+        {logorSign.state.logorsign === 'signin'&&<input type="email" placeholder="email" ref={email}/>}
         <button onClick={async(e) => {
             e.preventDefault()
-            const user = {username:username.current?.value,password:password.current?.value}
+            if(!username.current?.value || !password.current?.value){
+                setInputEmpty(true)
+                return
+            }
+            else{
+                setInputEmpty(false)
+            }
+            const user = {username:username.current?.value,password:password.current?.value,email:email.current?.value}
+            let res
             if(logorSign.state.logorsign === 'login'){
-                const res = await login(user)
-                if(res.status === 403){
-                    setPasswordMatch(false)
+                setLoading(true)
+                res = await login(user)
+            }
+            else if(logorSign.state.logorsign === 'signin'){
+                setLoading(true)
+                res = await signin(user)
+            }
+                if(res?.status === 403){
+                    setLoading(false)
+                    setPasswordMatch(true)
                 }
-                else if(res.status === 500){
-                    setNotError(false)
+                else if(res?.status === 500){
+                    setLoading(false)
+                    setError(true)
                 }
                 else{
-                    setPasswordMatch(true)
-                    setNotError(true)
+                    setLoading(false)
+                    setPasswordMatch(false)
+                    setError(false)
                 }
-            }
         }}>submit</button>
+        {loading && <p>loading...</p>}
+        {inputEmpty && <p>This is a required fields</p>}
+        {Error && <p>error in server</p>}
+        {notPasswordMatch && <p>password or user name not match</p>}
     </form>
 }
