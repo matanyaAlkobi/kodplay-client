@@ -1,9 +1,11 @@
-import { useLocation } from "react-router"
+import { useLocation, useNavigate } from "react-router"
 import login from "../utils/login"
 import { useRef, useState } from "react"
 import signin from "../utils/signin"
+import saveToken from "../utils/saveToken"
 
 export default function Login(){
+    const navigate = useNavigate()
     const logorSign = useLocation()
     const username = useRef<HTMLInputElement>(null)
     const password = useRef<HTMLInputElement>(null)
@@ -47,6 +49,9 @@ export default function Login(){
                     setLoading(false)
                     setPasswordMatch(false)
                     setError(false)
+                    const token = await res?.json()
+                    saveToken(token)
+                    navigate('/home')
                 }
         }}>submit</button>
         {loading && <p>loading...</p>}
