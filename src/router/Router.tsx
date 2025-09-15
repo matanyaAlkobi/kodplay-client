@@ -11,7 +11,7 @@ export default function Router() {
             <Route path="/" element={<Entry/>}/>
             <Route path="/login" element={<Login/>}/>
         <Route element={<Layout />}>
-          <Route path="/" element={<ImagePickerPage />} />
+          <Route path="/home" element={<ImagePickerPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
