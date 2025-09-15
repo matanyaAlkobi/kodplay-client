@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useNavigate } from "react-router"
 
 export default function Entry(){
@@ -5,10 +6,12 @@ export default function Entry(){
     return<>
         <h1>how do you want to entry</h1>
         <button onClick={() => {
-            navigate('/login')
+            const logorsign = 'login'
+            navigate('/login',{state:{logorsign:logorsign}})
         }}>Login</button>
         <button onClick={() => {
-            navigate('/login')
+            const logorSign = 'signin'
+            navigate('/login',{state:{logorsign:logorSign}})
         }}>signin</button>
     </>
 }
