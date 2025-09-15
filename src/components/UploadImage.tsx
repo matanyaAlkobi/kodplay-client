@@ -22,7 +22,7 @@ export default function UploadImage({ onImageSelect }: UploadImageProps) {
       <div>
         <label htmlFor="imageInput">
           <img
-            src="./src/assets/upload.png"
+            src="/src/assets/upload.png"
             alt="Upload"
             style={{ cursor: "pointer" }}
           />
