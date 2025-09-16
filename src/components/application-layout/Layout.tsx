@@ -6,10 +6,12 @@ import "../../styles/layout.css"
 export default function Layout() {
   const validUser = useLocation()
   const navigate = useNavigate()
+
   
   if(!validUser.state){
       navigate('/')
     }
+
   
   return (
     <>
