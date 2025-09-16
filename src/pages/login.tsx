@@ -3,6 +3,7 @@ import login from "../utils/login"
 import { useRef, useState } from "react"
 import signin from "../utils/signin"
 import saveToken from "../utils/saveToken"
+import "../styles/login.css"
 
 export default function Login(){
     const navigate = useNavigate()
@@ -14,7 +15,9 @@ export default function Login(){
     const [notPasswordMatch,setPasswordMatch] = useState(false)
     const [Error,setError] = useState(false)
     const [loading,setLoading] = useState(false)
-    return<form>
+    return (
+    <main id="login">
+      <form>
         <input type="text" placeholder="username" ref={username} required/>
         <input type="password" placeholder="password" ref={password} required/>
         {logorSign.state.logorsign === 'signin'&&<input type="email" placeholder="email" ref={email}/>}
@@ -54,9 +57,11 @@ export default function Login(){
                     navigate('/home',{state:{}})
                 }
         }}>submit</button>
-        {loading && <p>loading...</p>}
-        {inputEmpty && <p>This is a required fields</p>}
-        {Error && <p>error in server</p>}
-        {notPasswordMatch && <p>password or user name not match</p>}
-    </form>
+        {loading && <p className="hint">Loading...</p>}
+        {inputEmpty && <p className="error">This is a required fields</p>}
+        {Error && <p className="error">error in server</p>}
+        {notPasswordMatch && <p className="error">password or user name not match</p>}
+      </form>
+    </main>
+    )
 }

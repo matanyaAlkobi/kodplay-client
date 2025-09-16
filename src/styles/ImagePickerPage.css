@@ -1,43 +1,121 @@
+/* Theme tokens (scoped to this file) */
+:root {
+  --brand: #6366f1; /* indigo */
+  --brand-600: #5558ec;
+  --brand-50: #eef2ff;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+}
+
 .image-handle {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .h2-uploadImage {
-    display: flex;
-    justify-self: center;
+  display: flex;
+  justify-self: center;
+}
+
+.h2-uploadImage h2 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text);
 }
 
 .too-options {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 240px));
+  gap: clamp(0.75rem, 3vw, 1.5rem);
+  justify-content: center;
+  align-items: start;
 }
 
 .uploadImage-section {
-    background-color: aqua;
-    padding: 50px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    margin-top: 150px;
-    width: 200px;
-    height: 200px;
+  background: radial-gradient(120px 120px at 50% 50%, var(--brand-50), #ffffff);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.uploadImage-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 .selfTakingPicture-section {
-    background-color: aqua;
-    padding: 50px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    margin-top: 150px;
-    width: 200px;
-    height: 200px;
+  background: radial-gradient(120px 120px at 50% 50%, var(--brand-50), #ffffff);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.selfTakingPicture-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.selfTakingPicture-section label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Preview image scaling */
+.image-handle img {
+  max-inline-size: min(100%, 720px);
+  block-size: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* Stack options on small screens */
+@media (max-width: 640px) {
+  .too-options {
+    grid-template-columns: 1fr;
+    inline-size: 100%;
+  }
+}
+
+/* Primary CTA button */
+.image-handle > button {
+  margin-block: 0.5rem 1rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.image-handle > button:hover {
+  background: var(--brand-600);
+}
+
+.image-handle > button:active {
+  transform: translateY(1px);
 }

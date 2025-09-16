@@ -1,7 +1,8 @@
 .logo-section img{
     grid-column: 1;
-    width: 200px
-    
+    width: 200px;
+    max-width: 100%;
+    height: auto;
 }
 
 .navbar-section {
@@ -19,14 +20,110 @@
 }
 
 header {
-    display: grid;
-    grid-template-columns: 15% 70% 15%;
-    background-color: antiquewhite;
-    margin:  -8px;
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eef2f7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .navbar-section nav{
     display: flex;
     gap: 1rem;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Link + button styling */
+.navbar-section nav .navbar-link {
+  color: #111827;
+  text-decoration: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-section nav .navbar-link:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.navbar-section nav button,
+.profile-section button {
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #6366f1;
+  background: #6366f1;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.navbar-section nav button:hover,
+.profile-section button:hover {
+  background: #5558ec;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .logo-section {
+    grid-column: 1 / 2;
+    justify-self: start;
+  }
+  .navbar-section {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    align-items: center;
+  }
+  .navbar-section nav {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .profile-section {
+    grid-column: 2 / 3;
+    justify-self: end;
+  }
+  .logo-section img {
+    width: clamp(120px, 30vw, 180px);
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+  .logo-section {
+    grid-column: 1;
+    justify-self: center;
+  }
+  .navbar-section {
+    grid-column: 1;
+    justify-self: stretch;
+  }
+  .profile-section {
+    grid-column: 1;
+    justify-self: center;
+  }
+  .navbar-section nav {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+.outlet-arae {
+  padding: 1rem;
+}
+
+@media (min-width: 1024px) {
+  header {
+    grid-template-columns: 20% 60% 20%;
+  }
 }
