@@ -6,6 +6,7 @@ header {
   margin: -8px;
   padding: 10px 20px;
   color: #000;
+  align-items: center; /* מרכז את התוכן אנכית */
 }
 
 .logo-section img {
@@ -39,8 +40,8 @@ header {
   gap: 1rem;
 }
 
-/* Outlet area */
-.outlet-arae {
+/* Outlet area (תיקון שגיאת כתיב) */
+.outlet-area {
   padding: 1rem;
 }
 
@@ -61,17 +62,27 @@ header {
   }
 }
 
-/* ===== Responsiveness ===== */
+/* ===== Responsiveness (Mobile) ===== */
 @media (max-width: 768px) {
   header {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     text-align: center;
-    gap: 10px;
+    gap: 15px;
+  }
+
+  .logo-section img {
+    width: 120px;
   }
 
   .navbar-section {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .navbar-section nav {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .profile-section {
