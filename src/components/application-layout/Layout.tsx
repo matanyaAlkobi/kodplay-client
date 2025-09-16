@@ -7,11 +7,11 @@ import { useEffect } from "react";
 export default function Layout() {
   const validUser = useLocation()
   const navigate = useNavigate()
-  if(!validUser.state){
-    useEffect(()=>{
-      navigate('/')
+  useEffect(()=>{
+      if(!validUser.state){
+      navigate('/')}
     },[navigate])
-  }
+  
   return (
     <>
       <div>
