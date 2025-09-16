@@ -1,18 +1,19 @@
 import { Outlet, useLocation, useNavigate } from "react-router";
 import DisplayImage from "../DisplayImage";
 import Navbar from "./Navbar";
-import "../../styles/layout.css"
+import "../../styles/layout.css";
+import { useEffect } from "react";
 
 export default function Layout() {
-  const validUser = useLocation()
-  const navigate = useNavigate()
+  const validUser = useLocation();
+  const navigate = useNavigate();
 
-  
-  if(!validUser.state){
-      navigate('/')
+  useEffect(() => {
+    if (!validUser.state) {
+      navigate("/");
     }
+  }, []);
 
-  
   return (
     <>
       <div>
