@@ -1,6 +1,5 @@
 const API_BASE = import.meta.env.VITE_API_URL;
 
-
 export default async function checkIfTokenValid(){
     const token = localStorage.getItem('token_kodePlay')
     console.log(`token: ${token}`)
