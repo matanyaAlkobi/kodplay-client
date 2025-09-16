@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate } from "react-router";
+import { Link, Outlet, useLocation, useNavigate } from "react-router";
 import DisplayImage from "../DisplayImage";
 import Navbar from "./Navbar";
 import "../../styles/layout.css";
@@ -9,13 +9,11 @@ export default function Layout() {
   const validUser = useLocation();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     if (!validUser.state) {
       navigate("/");
     }
   }, []);
-
 
   return (
     <>
@@ -28,7 +26,10 @@ export default function Layout() {
             <Navbar />
           </div>
           <div className="profile-section">
-            <button>my profile</button>
+            <Link to="/profile" className="navbar-item">
+              <img src="/images/profile-icon.png" alt="Profile" />
+              <span>Profile</span>
+            </Link>
           </div>
         </header>
         <div className="outlet-arae">
