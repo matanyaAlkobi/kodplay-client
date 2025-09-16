@@ -1,27 +1,23 @@
-import { useState } from "react";
 import { Link } from "react-router";
 import SearchBar from "./SearchBar";
 
 export default function Navbar() {
-const [searchQuery, setSearchQuery] = useState<string>("");
-  console.log(searchQuery)
-  const handleSearch = (query:string)=>{
-    setSearchQuery(query)
-    console.log("Search query received from child:",query)
-    // כאן צריך להוסיף ניווט לדף או לשלוח בקשה לחיפוש  בשרת
-  }
-
-  
   return (
-    <nav>
-      <Link className="navbar-link" to="/home">
-        Home
+    <nav className="navbar-section">
+      {/* Home */}
+      <Link to="/home" className="navbar-item">
+        <img src="/images/home.png" alt="Home" />
+        <span>Home</span>
       </Link>
-      <SearchBar onSearch={handleSearch} />
-
-       {/* פה  צריכה להיכנס קומפוננטה של  צילום  תמונה
-       או פשוט לעשות  ניווט  לדף     לקיחת תמונה */}
-       <button>Take a picture</button>
+      {/* SearchBar בתוך Navbar */}
+      <div className="navbar-item">
+        <SearchBar />
+      </div>
+      {/* Take Picture */}
+      <Link to="/take-picture" className="navbar-item">
+        <img src="/images/photo_camera.png" alt="Take Picture" />
+        <span>Take Picture</span>
+      </Link>
     </nav>
   );
 }

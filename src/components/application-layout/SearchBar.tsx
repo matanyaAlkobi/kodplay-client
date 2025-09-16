@@ -15,9 +15,18 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-    <div>
-      <input type="text" ref={queryRef} placeholder="Search..." />
-      <button onClick={handleSubmit}>🔍</button>
+    <div className="searchbar-wrapper">
+      <input
+        type="text"
+        ref={queryRef}
+        placeholder="Type here..."
+      />
+      <img
+        src="/images/search.png"
+        alt="Search"
+        onClick={handleSubmit}
+        className="search-icon"
+      />
     </div>
   );
 }
