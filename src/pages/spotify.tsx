@@ -29,7 +29,7 @@ export default function Connect() {
   useEffect(()=>{
           if (!isToken) {
             window.open(
-              "https://kodplay-server.onrender.com/spotify/callback",
+              "https://kodplay-server.onrender.com//spotify/link",
               "SpotifyLogin",
               "width=600,height=800"
             );
