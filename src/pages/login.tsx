@@ -44,7 +44,7 @@ export default function Login(){
                     setLoading(false)
                     setPasswordMatch(true)
                 }
-                else if(res?.status === 500){
+                else if(!res?.ok){
                     setLoading(false)
                     setError(true)
                 }
