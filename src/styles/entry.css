@@ -12,7 +12,7 @@
     align-self: center;
     font-size: 1.75rem;
     font-weight: 600;
-    text-align: start;
+    text-align: center;
 }
 
 #entry > div {
@@ -122,4 +122,34 @@
   color: #475467;
   margin: 0;
   font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  #entry {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  #entry h1 {
+    font-size: 1.4rem;
+  }
+  #entry > div {
+    margin-block-start: 0;
+  }
+  #entry .panel {
+    max-inline-size: 100%;
+    padding: 0.75rem;
+  }
+  #entry .tabs {
+    gap: 0.4rem;
+  }
+  #entry .tabs button {
+    flex: 1 1 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #entry h1 {
+    font-size: 2rem;
+  }
 }
