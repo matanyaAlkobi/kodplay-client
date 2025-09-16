@@ -42,24 +42,8 @@ export default function Connect() {
   return (
     <>
     <h1>hi from spotify</h1>
-      {/* <button
-        onClick={() => {
-          if (!isToken) {
-            window.open(
-              "https://39144c13d311.ngrok-free.app/spotify/link",
-              "SpotifyLogin",
-              "width=600,height=800"
-            );
-          }
-          else{
-          navigate('/home',{state:{}})
-          }
-        }}
-      >
-        Login
-      </button> */}
     </>
   );
 
-  return <></>;
+ 
 }

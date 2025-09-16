@@ -83,7 +83,7 @@ button:hover {
   button:hover {
     background-color: #9b59d3;
   }
-}
+
 
 /* Responsiveness */
 @media (max-width: 768px) {
