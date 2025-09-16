@@ -1,32 +1,80 @@
-.logo-section img{
-    grid-column: 1;
-    width: 200px
-    
+/* ===== Base styles ===== */
+header {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  background-color: antiquewhite;
+  margin: -8px;
+  padding: 10px 20px;
+  color: #000;
+}
+
+.logo-section img {
+  width: 150px;
+  height: auto;
 }
 
 .navbar-section {
-    grid-column: 2;
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-section button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profile-section button:hover {
+  background-color: #0056b3;
+}
+
+/* Navbar */
+.navbar-section nav {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Outlet area */
+.outlet-arae {
+  padding: 1rem;
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  header {
+    background-color: #1f1f1f;
+    color: #f0f0f0;
+  }
+
+  .profile-section button {
+    background-color: #bb86fc;
+    color: #1f1f1f;
+  }
+
+  .navbar-section nav a {
+    color: #f0f0f0;
+  }
+}
+
+/* ===== Responsiveness ===== */
+@media (max-width: 768px) {
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .navbar-section {
     flex-direction: column;
-    justify-content: center;
+    gap: 10px;
+  }
+
+  .profile-section {
     justify-self: center;
-}
-
-.profile-section {
-    grid-column: 3;
-    justify-self: end;
-    padding: 5px;
-}
-
-header {
-    display: grid;
-    grid-template-columns: 15% 70% 15%;
-    background-color: antiquewhite;
-    margin:  -8px;
-}
-
-.navbar-section nav{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  }
 }
