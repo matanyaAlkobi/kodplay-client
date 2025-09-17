@@ -1,23 +1,26 @@
-import { useRef } from "react";
+// SearchBar.tsx
+import { useRef, useState } from "react";
+import Playlist from "../Playlist";
 
-type SearchBarProps = {
-  onSearch?: (query: string) => void;
-};
-
-export default function SearchBar({ onSearch }: SearchBarProps) {
+export default function SearchBar() {
   const queryRef = useRef<HTMLInputElement>(null);
-
-  const handleSubmit = () => {
-    if (onSearch && queryRef.current) {
-      onSearch(queryRef.current.value);
-      queryRef.current.value = "";
-    }
-  };
+  const [mood, setMood] = useState<string | null>(null);
 
   return (
     <div>
       <input type="text" ref={queryRef} placeholder="Search..." />
-      <button onClick={handleSubmit}>🔍</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          if (queryRef.current) {
+            setMood(queryRef.current.value);
+          }
+        }}
+      >
+        🔍
+      </button>
+
+      {mood && <Playlist mood={mood} />}
     </div>
   );
 }

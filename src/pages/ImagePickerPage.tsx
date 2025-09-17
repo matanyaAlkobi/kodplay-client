@@ -3,9 +3,11 @@ import UploadImage from "../components/UploadImage.tsx";
 import "../styles/ImagePickerPage.css";
 
 import { detectFacialExpression } from "../components";
+import Playlist from "../components/Playlist.tsx";
 
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [result, setRes] = useState<string | null>(null);
 
   const handleImageSelect = (imageURL: string) => {
     setSelectedImage(imageURL);
@@ -16,8 +18,13 @@ export function ImagePickerPage() {
       alert("Please select or take a picture first!");
       return;
     }
-    await detectFacialExpression(selectedImage);
-
+    const res=await detectFacialExpression(selectedImage);
+    
+    setRes(res)
+    
+    
+  
+  
   };
 
   return (
@@ -49,6 +56,9 @@ export function ImagePickerPage() {
         </div>
 
         <button onClick={handleSubmit}>Continue</button>
+         {result &&<Playlist mood={result} />}
+
+        
       </div>
     </>
   );
