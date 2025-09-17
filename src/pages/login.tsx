@@ -44,7 +44,7 @@ export default function Login(){
                     setLoading(false)
                     setPasswordMatch(true)
                 }
-                else if(res?.status === 500){
+                else if(!res?.ok){
                     setLoading(false)
                     setError(true)
                 }
@@ -54,7 +54,7 @@ export default function Login(){
                     setError(false)
                     const token = await res?.json()
                     saveToken(token)
-                    navigate('/home',{state:{}})
+                    navigate('/spotify',{state:{}})
                 }
         }}>submit</button>
         {loading && <p className="hint">Loading...</p>}

@@ -1,129 +1,124 @@
-.logo-section img{
-    grid-column: 1;
-    width: 200px;
-    max-width: 100%;
-    height: auto;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  color: white;
+  font-family: "Inter", "Rubik", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  flex-wrap: wrap;
+}
+
+.logo-section img {
+  width: 140px;
+  height: auto;
 }
 
 .navbar-section {
-    grid-column: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-self: center;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.profile-section {
-    grid-column: 3;
-    justify-self: end;
-    padding: 5px;
-}
-
-header {
-  display: grid;
-  grid-template-columns: 15% 70% 15%;
-  background-color: #ffffff;
-  margin: 0;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eef2f7;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.navbar-section nav{
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-/* Link + button styling */
-.navbar-section nav .navbar-link {
-  color: #111827;
-  text-decoration: none;
-  padding: 0.4rem 0.7rem;
-  border-radius: 8px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.navbar-section nav .navbar-link:hover {
-  background-color: #f3f4f6;
-  color: #1f2937;
-}
-
-.navbar-section nav button,
-.profile-section button {
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
-  border: 1px solid #6366f1;
-  background: #6366f1;
-  color: #fff;
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
   cursor: pointer;
-  transition: background 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+  color: white;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.navbar-section nav button:hover,
-.profile-section button:hover {
-  background: #5558ec;
+.navbar-item:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-/* Responsive adjustments */
+.navbar-item img {
+  width: 24px; /* מעט קטן יותר */
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.navbar-item img:hover {
+  transform: scale(1.1);
+}
+
+/* SearchBar בתוך Navbar */
+.searchbar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(255,255,255,0.1);
+  padding: 0.5rem 0.75rem; /* קצת יותר גדול מהאייקונים */
+  border-radius: 15px;
+}
+
+.searchbar-wrapper input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  width: 160px; /* קצת רחב יותר */
+  font-size: 0.9rem; /* מעט גדול יותר */
+}
+
+.searchbar-wrapper input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.searchbar-wrapper input:focus {
+  border-color: #bb86fc;
+}
+
+.searchbar-wrapper .search-icon {
+  width: 24px; /* תואם לאייקונים */
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  header {
+    background: linear-gradient(90deg, #1f1f1f, #111827);
+  }
+
+  .navbar-item,
+  .navbar-item span {
+    color: #f9fafb;
+    font-size: 0.7rem;
+  }
+
+  .searchbar-wrapper input {
+    color: #f0f0f0;
+  }
+
+  .searchbar-wrapper input::placeholder {
+    color: rgba(249,250,251,0.7);
+  }
+}
+
+/* Responsiveness */
 @media (max-width: 768px) {
   header {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    flex-direction: column;
+    gap: 1rem;
   }
-  .logo-section {
-    grid-column: 1 / 2;
-    justify-self: start;
-  }
+
   .navbar-section {
-    grid-column: 1 / -1;
-    justify-self: stretch;
-    align-items: center;
-  }
-  .navbar-section nav {
     justify-content: center;
-    gap: 0.75rem;
   }
-  .profile-section {
-    grid-column: 2 / 3;
-    justify-self: end;
-  }
-  .logo-section img {
-    width: clamp(120px, 30vw, 180px);
-  }
-}
 
-@media (max-width: 480px) {
-  header {
-    grid-template-columns: 1fr;
-    padding: 0.5rem;
-  }
-  .logo-section {
-    grid-column: 1;
-    justify-self: center;
-  }
-  .navbar-section {
-    grid-column: 1;
-    justify-self: stretch;
-  }
-  .profile-section {
-    grid-column: 1;
-    justify-self: center;
-  }
-  .navbar-section nav {
-    justify-content: center;
-    gap: 0.5rem;
-  }
-}
-
-.outlet-arae {
-  padding: 1rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    grid-template-columns: 20% 60% 20%;
+  .searchbar-wrapper input {
+    width: 120px; /* מותאם למובייל */
   }
 }

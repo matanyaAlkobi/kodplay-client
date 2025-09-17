@@ -1,11 +1,17 @@
 import { useState } from "react";
-import UploadImage from "../components/UploadImage.tsx";
+import { useNavigate } from "react-router-dom";
+import { UploadImage, TakePicture } from "../components";
 import "../styles/ImagePickerPage.css";
 
-import { detectFacialExpression } from "../components";
+
+
+  
+  
+
 
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleImageSelect = (imageURL: string) => {
     setSelectedImage(imageURL);
@@ -16,7 +22,8 @@ export function ImagePickerPage() {
       alert("Please select or take a picture first!");
       return;
     }
-    await detectFacialExpression(selectedImage);
+
+    navigate("/face-detection", { state: { imageURL: selectedImage } });
 
   };
 
@@ -29,26 +36,14 @@ export function ImagePickerPage() {
         {selectedImage && <img src={selectedImage} alt="preview" />}
 
         <div className="too-options">
-          <div className="uploadImage-section">
-            <UploadImage onImageSelect={handleImageSelect} />
-          </div>
+          <UploadImage onImageSelect={handleImageSelect} />
 
-          <div className="selfTakingPicture-section">
-            <div>
-              <div>
-                <label>Upload Image</label>
-              </div>
-              <div>
-                <img
-                  src="/images/familiar_face_and_zone.png"
-                  alt="preview"
-                />
-              </div>
-            </div>
-          </div>
+          <TakePicture onImageSelect={handleImageSelect} />
         </div>
 
-        <button onClick={handleSubmit}>Continue</button>
+        <button className="expression-analysis-btn" onClick={handleSubmit}>Expression Analysis</button>
+        
+
       </div>
     </>
   );
