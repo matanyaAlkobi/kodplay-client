@@ -6,3 +6,11 @@ body,
   padding: 0;
   scrollbar-width: none;
 }
+
+.face-detection-result {
+  justify-self: center;
+  margin-top: 10rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #111827;
+}

@@ -25,25 +25,49 @@
   justify-content: center;
 }
 
-.uploadImage-section,
-.selfTakingPicture-section {
+.upload-image,
+.take-picture {
+  display: none;
+  cursor: pointer;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: white;
 }
 
-.uploadImage-section:hover,
-.selfTakingPicture-section:hover {
+#imageInput {
+  display: none;
+}
+
+.upload-image:hover,
+.take-picture:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(99,102,241,0.4);
+  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.4);
 }
 
-button {
+.upload-image-label,
+.take-picture-label {
+  grid-row: 2/3;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.upload-image-icon,
+.take-picture-icon {
+  grid-row: 4/6;
+  width: auto;
+  height: 5em;
+  margin: 0;
+  padding: 0;
+}
+
+.expression-analysis-btn {
   padding: 0.8rem 1.2rem;
   border: none;
   border-radius: 12px;
@@ -54,7 +78,7 @@ button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button:hover {
+.expression-analysis-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(99, 102, 241, 0.35);
 }
@@ -64,13 +88,18 @@ button:hover {
     background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
     color: #f9fafb;
   }
-  .uploadImage-section,
-  .selfTakingPicture-section {
+  .upload-image,
+  .take-picture {
     background: linear-gradient(135deg, #8b5cf6, #6366f1);
   }
-  button { background: linear-gradient(90deg, #8b5cf6, #6366f1); }
+  .expression-analysis-btn {
+    background: linear-gradient(90deg, #8b5cf6, #6366f1);
+  }
 }
 
 @media (max-width: 768px) {
-  .too-options { flex-direction: column; gap: 1.5rem; }
+  .too-options {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 }
