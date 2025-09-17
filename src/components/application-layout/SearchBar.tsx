@@ -7,6 +7,7 @@ export default function SearchBar() {
   const [mood, setMood] = useState<string | null>(null);
 
   return (
+
     <div>
       <input type="text" ref={queryRef} placeholder="Search..." />
       <button
@@ -21,6 +22,21 @@ export default function SearchBar() {
       </button>
 
       {mood && <Playlist mood={mood} />}
-    </div>
+
+    {/* <div className="searchbar-wrapper">
+      <input
+        type="text"
+        ref={queryRef}
+        placeholder="Type here..."
+      />
+      <img
+        src="/images/search.png"
+        alt="Search"
+        onClick={handleSubmit}
+        className="search-icon"
+      /> */}
+
+    {/* </div> */}
+  </div>
   );
 }

@@ -37,7 +37,7 @@ export default function Playlist(props: { mood: any }) {
   return (
     <>
       {playlist && (
-        <iframe
+        <iframe className="playlist"
           style={{ borderRadius: "12px" }}
           src={playlist}
           width="100%"
@@ -47,6 +47,7 @@ export default function Playlist(props: { mood: any }) {
           loading="lazy"
         />
       )}
+      
     </>
   );
 }
