@@ -1,5 +1,4 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router";
-import DisplayImage from "../DisplayImage";
 import Navbar from "./Navbar";
 import "../../styles/layout.css";
 
@@ -20,7 +19,7 @@ export default function Layout() {
       <div>
         <header>
           <div className="logo-section">
-            <DisplayImage imgSrc="/images/logo.png" alt="app logo" />
+            <img src="/images/logo.png" alt="app logo" />
           </div>
           <div className="navbar-section">
             <Navbar />
