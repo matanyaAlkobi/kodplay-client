@@ -1,4 +1,6 @@
 import detectFacialExpression from "./FaceDetection/services";
 import FaceDetection from "./FaceDetection/FaceDetection";
 import Layout from "./application-layout/Layout";
-export { detectFacialExpression, FaceDetection, Layout };
+import { UploadImage, TakePicture } from "./application-layout/UploadImage";
+
+export { detectFacialExpression, FaceDetection, Layout, UploadImage, TakePicture };
