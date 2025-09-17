@@ -95,5 +95,6 @@ export default async function detectFacialExpression(
 
   // Analyze the image and return the result
   const result = await analyzeImage(imageURL);
+
   return result;
 }

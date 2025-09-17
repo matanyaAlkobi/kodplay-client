@@ -3,9 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { UploadImage, TakePicture } from "../components";
 import "../styles/ImagePickerPage.css";
 
+
+
+import Playlist from "../components/Playlist.tsx";
+  
+  
+
+
 export function ImagePickerPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const navigate = useNavigate();
+
   const handleImageSelect = (imageURL: string) => {
     setSelectedImage(imageURL);
   };
@@ -15,7 +23,9 @@ export function ImagePickerPage() {
       alert("Please select or take a picture first!");
       return;
     }
+
     navigate("/face-detection", { state: { imageURL: selectedImage } });
+
   };
 
   return (
@@ -33,6 +43,8 @@ export function ImagePickerPage() {
         </div>
 
         <button className="expression-analysis-btn" onClick={handleSubmit}>Expression Analysis</button>
+        
+
       </div>
     </>
   );
