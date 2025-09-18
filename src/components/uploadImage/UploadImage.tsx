@@ -76,7 +76,7 @@ export function TakePicture({ onImageSelect }: UploadImageProps) {
           <div className="option-icon-container">
             <img
               className="option-icon"
-              src="/images/camera.png"
+              src="/images/photo_camera.png"
               alt="Camera"
             />
           </div>
