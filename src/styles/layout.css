@@ -88,6 +88,12 @@ header {
 
 .actions-section {
   display: flex;
+  align-items: center;
+}
+
+.cws-text {
+  margin: 5px;
+      font-family: "Inter", "Rubik", sans-serif;
 }
 
 .web-store {
@@ -96,7 +102,7 @@ header {
 }
 
 .cws-button {
-  font-size: 12px;
+  font-size: 0.85rem;
   text-decoration: none;
   color: #f9fafb;
   margin-left: 15px;
