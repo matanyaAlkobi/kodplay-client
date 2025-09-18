@@ -14,10 +14,6 @@ export default function FaceDetection() {
         const result = await detectFacialExpression(imageURL);
         setIsDetected(true);
         setExpression(result);
-        
-    
-    
-    
       } else {
         setExpression("No image URL provided for facial expression detection.");
       }
@@ -26,9 +22,7 @@ export default function FaceDetection() {
   }, []);
   return (
     <div className="face-detection-result">
-      {isDetected ? <Playlist mood={expression}/>  : "Detecting face..."}
-       
+      {isDetected ? <Playlist mood={expression} /> : "Detecting face..."}
     </div>
-
   );
 }

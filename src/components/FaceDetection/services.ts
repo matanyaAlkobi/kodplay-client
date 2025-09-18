@@ -1,6 +1,5 @@
 import * as faceapi from "face-api.js";
 
-// Type definition for expression names
 type ExpressionName =
   | "happy"
   | "sad"
@@ -10,7 +9,7 @@ type ExpressionName =
   | "surprised"
   | "neutral";
 
-// Function to load face-api.js models
+// Load models
 async function loadFaceApiModels(): Promise<boolean> {
   try {
     console.log("Loading face detection models...");
@@ -27,7 +26,7 @@ async function loadFaceApiModels(): Promise<boolean> {
   }
 }
 
-// Function to find the highest scoring expression
+// Get highest scoring expression
 function getTopExpression(expressions: faceapi.FaceExpressions): string {
   let topExpression: ExpressionName = "neutral";
   let maxScore = 0;
@@ -42,11 +41,28 @@ function getTopExpression(expressions: faceapi.FaceExpressions): string {
   return topExpression;
 }
 
-// Function to analyze an image and detect facial expressions
-async function analyzeImage(imageURL: string): Promise<string> {
+// Create image element from URL or Base64
+async function createImage(input: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous"; 
+    img.onload = () => resolve(img);
+    img.onerror = (err) => reject(err);
+
+
+    if (input.startsWith("data:image/")) {
+      img.src = input;
+    } else {
+      img.src = input; 
+    }
+  });
+}
+
+// Analyze image
+async function analyzeImage(imageInput: string): Promise<string> {
   try {
     console.log("Analyzing facial expressions from image...");
-    const img = await faceapi.fetchImage(imageURL);
+    const img = await createImage(imageInput);
 
     const detections = await faceapi
       .detectAllFaces(
@@ -74,27 +90,21 @@ async function analyzeImage(imageURL: string): Promise<string> {
   }
 }
 
-// Function to manage the facial expression detection process
+// Main function
 export default async function detectFacialExpression(
-  imageURL: string
+  imageInput: string
 ): Promise<ExpressionName | string> {
-  // Validate the URL
-
-  console.log(imageURL);
-  if (!imageURL) {
-    console.error("No valid image URL provided");
-    return "Error: No valid image URL provided";
+  if (!imageInput) {
+    console.error("No valid image input provided");
+    return "Error: No valid image input provided";
   }
 
-  // Load the models
   const isModelLoaded = await loadFaceApiModels();
   if (!isModelLoaded) {
     console.error("Failed to load models");
     return "Error loading models";
   }
 
-  // Analyze the image and return the result
-  const result = await analyzeImage(imageURL);
-
+  const result = await analyzeImage(imageInput);
   return result;
 }

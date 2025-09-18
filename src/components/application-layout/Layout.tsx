@@ -10,7 +10,7 @@ export default function Layout() {
 
   useEffect(() => {
     if (!validUser.state) {
-      navigate("/");
+      navigate("/#");
     }
   }, []);
 
