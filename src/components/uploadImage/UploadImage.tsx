@@ -40,7 +40,7 @@ export function UploadImage({ onImageSelect }: UploadImageProps) {
 
 export function TakePicture({ onImageSelect }: UploadImageProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [imgURL, setImgURL] = useState<string | null>(null);
+
   const [isCameraOpen, setIsCameraOpen] = useState(false);
 
   const openCam = async () => {
@@ -65,7 +65,6 @@ export function TakePicture({ onImageSelect }: UploadImageProps) {
     if (ctx) {
       ctx.drawImage(videoRef.current, 0, 0);
       const dataUrl = canvas.toDataURL("image/png");
-      setImgURL(dataUrl);
       onImageSelect(dataUrl);
     }
   };
@@ -91,19 +90,18 @@ export function TakePicture({ onImageSelect }: UploadImageProps) {
         </>
       )}
 
-        <div className="camera-interface">
-          <video
-            className="camera-video-stream"
-            ref={videoRef}
-            autoPlay
-            playsInline
-            muted
-          />
-          <button className="capture-photo-btn" onClick={capture}>
-            Capture Photo
-          </button>
-        </div>
-      
+      <div className="camera-interface">
+        <video
+          className="camera-video-stream"
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+        />
+        <button className="capture-photo-btn" onClick={capture}>
+          Capture Photo
+        </button>
+      </div>
     </div>
   );
 }
