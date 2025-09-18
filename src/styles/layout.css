@@ -86,6 +86,28 @@ header {
   cursor: pointer;
 }
 
+.actions-section {
+  display: flex;
+}
+
+.web-store {
+  width: 30px;
+  height: 30px;
+}
+
+.cws-button {
+  font-size: 12px;
+  text-decoration: none;
+  color: #f9fafb;
+  margin-left: 15px;
+}
+
+.web-store-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   header {
