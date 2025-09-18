@@ -1,16 +1,31 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Playlist(props: { mood: any }) {
-  console.log("mood", props.mood);
+interface PlaylistProps {
+  mood: string;
+}
+
+interface PlaylistItem {
+  id: string;
+}
+
+export default function Playlist({ mood }: PlaylistProps) {
+  console.log("mood", mood);
 
   const [playlist, setPlay] = useState<string | null>(null);
   const token = localStorage.getItem("spotify_access_token");
+  const navigate = useNavigate();
   console.log("token", token);
 
   useEffect(() => {
     async function getPlaylist() {
-      const data: any = await fetch(
-        `https://kodplay-server.onrender.com/spotify/search/playlist/${props.mood}`,
+      if (!token) {
+        navigate("/spotify");
+        return;
+      }
+
+      const data: PlaylistItem[] = await fetch(
+        `https://kodplay-server.onrender.com/spotify/search/playlist/${mood}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -21,7 +36,7 @@ export default function Playlist(props: { mood: any }) {
       console.log("data:", data);
 
       const valid = Array.isArray(data)
-        ? data.find((p: any) => p && p.id)
+        ? data.find((p: PlaylistItem) => p && p.id)
         : null;
 
       if (valid) {
@@ -32,7 +47,7 @@ export default function Playlist(props: { mood: any }) {
       }
     }
     getPlaylist();
-  }, [props.mood, token]);
+  }, [mood, token, navigate]);
 
   return (
     <>

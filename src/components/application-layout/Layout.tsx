@@ -12,7 +12,7 @@ export default function Layout() {
     if (!validUser.state) {
       navigate("/");
     }
-  }, []);
+  }, [navigate, validUser.state]);
 
   return (
     <>

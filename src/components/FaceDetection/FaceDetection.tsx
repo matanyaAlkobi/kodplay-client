@@ -23,7 +23,7 @@ export default function FaceDetection() {
       }
     };
     fetchData();
-  }, []);
+  }, [imageURL]);
   return (
     <div className="face-detection-result">
       {isDetected ? <Playlist mood={expression}/>  : "Detecting face..."}
