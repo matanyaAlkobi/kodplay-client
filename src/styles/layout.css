@@ -218,3 +218,135 @@ header {
     width: 210px;
   }
 }
+
+/* Fix: search caret visibility and layering */
+.search-input {
+  caret-color: #0b1220;
+}
+
+.search-icon-button {
+  z-index: 1;
+}
+
+/* Larger search size for clarity */
+.searchbar {
+  width: 320px;
+}
+
+.search-input {
+  font-size: 1rem;
+  padding: 0.6rem 0.8rem 0.6rem 2.4rem;
+}
+
+.search-icon-button {
+  left: 12px;
+  width: 30px;
+  height: 30px;
+}
+
+/* Make playlist appear in a normal place even when rendered from header */
+
+
+
+@media (max-width: 768px) {
+  .searchbar {
+    width: 240px;
+  }
+
+  .outlet-arae {
+    padding-top: 380px;
+  }
+}
+/* ===== Spotify playlist panel positioning ===== */
+:root {
+  --header-height: 84px; /* adjust if header height changes */
+  --playlist-height: clamp(320px, 35vw, 420px);
+}
+
+/* Place playlist just under sticky header, centered, with shadow */
+header .playlist {
+  position: fixed;
+  top: calc(var(--header-height) + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(95vw, 980px) !important;
+  height: var(--playlist-height) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 40px rgba(17,24,39,0.35), 0 4px 14px rgba(0,0,0,0.25);
+  background: #0b1220; /* fallback behind iframe edges */
+  z-index: 45; /* below header(50), above content */
+}
+
+/* Only when the header contains a playlist, push the content down */
+header:has(.playlist-panel) ~ .outlet-arae {
+  margin-top: calc(var(--playlist-height) + 16px);
+}
+
+@supports not(selector(header:has(.playlist-panel))) {
+  /* Fallback for browsers without :has: keep old behavior */
+  .outlet-arae { margin-top: 400px; }
+}
+
+@media (max-width: 768px) {
+  :root { --header-height: 78px; }
+  header:has(.playlist-panel) ~ .outlet-arae { margin-top: calc(var(--playlist-height) + 12px); }
+}
+
+/* ===== Playlist panel (with close + scroll hide) ===== */
+:root { --playlist-height: clamp(320px, 35vw, 420px); }
+
+header .playlist-panel {
+  position: fixed;
+  top: calc(var(--header-height, 84px) + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(95vw, 980px);
+  height: var(--playlist-height);
+  padding: 6px; /* room for close button shadow */
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(17,24,39,0.35), 0 4px 14px rgba(0,0,0,0.25);
+  background: rgba(11,18,32,0.9);
+  backdrop-filter: blur(6px);
+  z-index: 45;
+  transition: transform .25s ease, opacity .25s ease;
+}
+header .playlist-panel.is-hidden {
+  transform: translate(-50%, calc(-100% - 16px));
+  opacity: 0;
+  pointer-events: none;
+}
+header .playlist-panel .playlist {
+  width: 100% !important;
+  height: calc(var(--playlist-height) - 0px) !important;
+  display: block;
+}
+.playlist-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.9);
+  color: #0b1220;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+}
+.playlist-close:hover { background: #fff; }
+
+/* push content only when panel exists */
+header:has(.playlist-panel) ~ .outlet-arae { margin-top: calc(var(--playlist-height) + 16px); }
+@supports not(selector(header:has(.playlist-panel))) {
+  .outlet-arae { margin-top: 400px; }
+}
+
+@media (max-width: 768px) {
+  header .playlist-panel { top: calc(var(--header-height, 78px) + 4px); width: 95vw; }
+  header:has(.playlist-panel) ~ .outlet-arae { margin-top: calc(var(--playlist-height) + 12px); }
+}
