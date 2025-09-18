@@ -9,7 +9,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   flex-wrap: wrap;
 }
 
@@ -43,7 +43,8 @@ header {
 }
 
 .navbar-item img {
-  width: 24px; /* מעט קטן יותר */
+  width: 24px;
+  /* מעט קטן יותר */
   height: 24px;
   transition: transform 0.2s ease;
 }
@@ -57,8 +58,9 @@ header {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  background: rgba(255,255,255,0.1);
-  padding: 0.5rem 0.75rem; /* קצת יותר גדול מהאייקונים */
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.75rem;
+  /* קצת יותר גדול מהאייקונים */
   border-radius: 15px;
 }
 
@@ -68,12 +70,14 @@ header {
   background: transparent;
   color: white;
   padding: 0.25rem 0.5rem;
-  width: 160px; /* קצת רחב יותר */
-  font-size: 0.9rem; /* מעט גדול יותר */
+  width: 160px;
+  /* קצת רחב יותר */
+  font-size: 0.9rem;
+  /* מעט גדול יותר */
 }
 
 .searchbar-wrapper input::placeholder {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .searchbar-wrapper input:focus {
@@ -81,7 +85,8 @@ header {
 }
 
 .searchbar-wrapper .search-icon {
-  width: 24px; /* תואם לאייקונים */
+  width: 24px;
+  /* תואם לאייקונים */
   height: 24px;
   cursor: pointer;
 }
@@ -93,7 +98,7 @@ header {
 
 .cws-text {
   margin: 5px;
-      font-family: "Inter", "Rubik", sans-serif;
+  font-family: "Inter", "Rubik", sans-serif;
 }
 
 .web-store {
@@ -131,7 +136,7 @@ header {
   }
 
   .searchbar-wrapper input::placeholder {
-    color: rgba(249,250,251,0.7);
+    color: rgba(249, 250, 251, 0.7);
   }
 }
 
@@ -147,6 +152,69 @@ header {
   }
 
   .searchbar-wrapper input {
-    width: 120px; /* מותאם למובייל */
+    width: 120px;
+    /* מותאם למובייל */
+  }
+}
+
+/* Inline icon search field */
+.searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 260px;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.searchbar:focus-within {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.search-icon-button {
+  position: absolute;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+  /* space for icon */
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .searchbar {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+}
+
+@media (max-width: 768px) {
+  .searchbar {
+    width: 210px;
   }
 }
